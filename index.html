@@ -29,15 +29,15 @@ section{padding:70px 0}.section-title{text-align:center;font-size:clamp(1.8rem,4
 .section-sub{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 34px}
 .problem{background:#fff}.problem-card{background:#fff5f8;border:1px solid var(--line);border-radius:22px;padding:28px;max-width:850px;margin:auto;text-align:center}
 .problem-card p{margin:8px 0;color:#604b55}
-.benefits{background:#fff7fa;padding:48px 0}.benefit-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
-.benefit{flex:0 0 48%;min-width:220px;scroll-snap-align:start;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center}
+.benefits{background:#fff7fa;padding:48px 0}.marquee-viewport{width:100%;overflow:hidden}.marquee-track{display:flex;width:max-content;will-change:transform;animation:marqueeContinuous 34s linear infinite}.marquee-group{display:flex;flex:0 0 auto;gap:14px;padding-right:14px}.marquee-viewport:active .marquee-track,.marquee-viewport.is-paused .marquee-track{animation-play-state:paused}@keyframes marqueeContinuous{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.benefit{flex:0 0 260px;min-width:0;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center}
 .benefit .symbol{font-size:1.8rem;color:var(--rose)}.benefit h3{margin:8px 0 5px;font-size:1.05rem}.benefit p{font-size:.9rem;color:var(--muted);margin:0}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#f5e6ec;box-shadow:0 5px 18px #53263812}
 .gallery img{display:block;width:100%;aspect-ratio:3/4;object-fit:contain;background:#f5e6ec;transition:transform .35s;cursor:zoom-in}
 .gallery figure:hover img{transform:scale(1.035)}
 .gallery figcaption{padding:9px 11px;font-size:.85rem;font-weight:700;color:#5e4650}
-.social-proof{background:#fff5f8}.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.social-proof{background:#fff5f8}.quote-grid{display:flex;width:max-content}.quote{flex:0 0 310px}
 .quote{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}.stars{color:#e7a323;letter-spacing:3px}.quote p{margin:9px 0;color:#604b55}.quote strong{font-size:.9rem}
 .contact{background:linear-gradient(120deg,#b91457,#dc4f89);color:white}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
@@ -66,10 +66,10 @@ footer{background:#25151e;color:#fff;padding:28px 0}
  .nav{padding:8px 0}.logo{width:150px}.navlinks{display:none}.navcta{padding:10px 15px;font-size:.85rem}
  .hero-grid{grid-template-columns:1fr;gap:20px;padding:35px 0 28px}.hero-photo{height:auto;max-width:440px;width:100%;margin:auto;grid-row:1}
  .hero-copy{text-align:center}.lead{margin:auto}.hero-actions,.trustline{justify-content:center}
- section{padding:46px 0}.benefits,.stores{padding:34px 0}.benefit-grid{gap:10px}.benefit{flex:0 0 78%;min-width:0;padding:16px 13px}
+ section{padding:46px 0}.benefits,.stores{padding:34px 0}.marquee-group{gap:10px;padding-right:10px}.benefit{flex:0 0 78vw;min-width:0;padding:16px 13px}
  .gallery{grid-template-columns:repeat(2,1fr);gap:10px}.gallery figcaption{font-size:.78rem}
- .quote-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.contact .section-title{text-align:center}
- .store-grid{gap:10px}.store{flex:0 0 86%;min-width:0;padding:17px}.floating{right:12px;bottom:12px}
+ .quote{flex-basis:82vw}.contact-grid{grid-template-columns:1fr}.contact .section-title{text-align:center}
+ .store{flex:0 0 86vw;min-width:0;padding:17px}.floating{right:12px;bottom:12px}
 }
 @media(min-width:761px) and (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}.benefit{flex-basis:calc(50% - 7px)}.store{flex-basis:calc(50% - 7px)}}
 
@@ -77,8 +77,7 @@ footer{background:#25151e;color:#fff;padding:28px 0}
 .lightbox.open{display:flex}.lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .lightbox-close{position:absolute;top:12px;right:16px;border:0;border-radius:50%;width:44px;height:44px;background:#fff;color:#21151b;font-size:28px;cursor:pointer}
 
-.benefit-grid,.store-grid{-ms-overflow-style:none;scrollbar-width:none}
-.benefit-grid::-webkit-scrollbar,.store-grid::-webkit-scrollbar{display:none;width:0;height:0}
+.marquee-viewport{-ms-overflow-style:none;scrollbar-width:none}
 /* Efeitos sutis: leves, responsivos e sem bibliotecas externas */
 .hero-copy{animation:heroEntrada .65s ease both}
 .hero-photo{animation:heroEntrada .8s ease both;transition:box-shadow .3s,transform .3s}
@@ -135,12 +134,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #e7a2bb;outline-offset:3p
 
 <section class="benefits" id="vantagens"><div class="wrap">
  <h2 class="section-title">Por que escolher a Vanezi?</h2><p class="section-sub">Uma seleção de moda feminina para diferentes estilos e momentos.</p>
- <div class="benefit-grid" role="region" aria-label="Vantagens da Vanezi. Deslize horizontalmente para ver os cartões" tabindex="0">
+ <div class="marquee-viewport"><div class="benefit-grid marquee-track" role="region" aria-label="Vantagens da Vanezi">
+  <div class="marquee-group">
   <article class="benefit"><div class="symbol">♡</div><h3>Do P ao Plus Size</h3><p>Mais possibilidades para encontrar o seu tamanho.</p></article>
   <article class="benefit"><div class="symbol">✧</div><h3>Looks versáteis</h3><p>Opções para o trabalho, passeios e fim de semana.</p></article>
   <article class="benefit"><div class="symbol">◇</div><h3>Escolha com ajuda</h3><p>Fale com nossa equipe e tire suas dúvidas.</p></article>
   <article class="benefit"><div class="symbol">⌖</div><h3>Três unidades</h3><p>Estamos em pontos de Juiz de Fora.</p></article>
- </div>
+  </div>
+ </div></div>
 </div></section>
 
 <section id="colecao"><div class="wrap">
@@ -165,11 +166,13 @@ a:focus-visible,button:focus-visible{outline:3px solid #e7a2bb;outline-offset:3p
 
 <section class="social-proof"><div class="wrap">
  <h2 class="section-title">A Vanezi faz parte do seu dia a dia</h2><p class="section-sub">Acompanhe as novidades, veja as produções e conheça as peças que chegam às lojas.</p>
- <div class="quote-grid">
+ <div class="marquee-viewport reviews-viewport"><div class="quote-grid marquee-track" role="region" aria-label="Comentários sobre a Vanezi">
+  <div class="marquee-group">
   <article class="quote"><div class="stars">★★★★★</div><p>“Encontrei looks que combinam com meu estilo. O atendimento pelo WhatsApp ajuda muito na escolha.”</p><strong>Experiência de compra</strong></article>
   <article class="quote"><div class="stars">★★★★★</div><p>“Tem opções para montar produções diferentes, desde o dia a dia até uma ocasião especial.”</p><strong>Moda para vários momentos</strong></article>
   <article class="quote"><div class="stars">★★★★★</div><p>“Gosto de acompanhar as novidades e ver as peças nas produções do Instagram.”</p><strong>Cliente Vanezi</strong></article>
- </div>
+  </div>
+ </div></div>
 </div></section>
 
 
@@ -189,11 +192,13 @@ a:focus-visible,button:focus-visible{outline:3px solid #e7a2bb;outline-offset:3p
 
 <section class="stores" id="lojas"><div class="wrap">
  <h2 class="section-title">Encontre uma Vanezi</h2><p class="section-sub">Escolha a unidade mais conveniente e venha nos visitar.</p>
- <div class="store-grid" role="region" aria-label="Endereços das lojas Vanezi. Deslize horizontalmente para ver as unidades" tabindex="0">
+ <div class="marquee-viewport"><div class="store-grid marquee-track" role="region" aria-label="Endereços das lojas Vanezi">
+  <div class="marquee-group">
   <article class="store"><h3>Loja São Mateus</h3><p>Rua São Mateus, 416, São Mateus</p><p>Juiz de Fora, MG, CEP 36025-000</p><p>Segunda a sexta: 9h às 18h30</p><p>Sábado: 9h às 13h30</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Sao+Mateus+416+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
   <article class="store"><h3>Shopping Jardim Norte</h3><p>Av. Brasil, 6345, Mariano Procópio</p><p>Juiz de Fora, MG, CEP 36080-060</p><p>Segunda a sábado: 10h às 22h</p><p>Domingo: 12h às 20h</p><a href="https://www.google.com/maps/search/?api=1&query=Shopping+Jardim+Norte+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
   <article class="store"><h3>Santa Cruz Shopping</h3><p>Rua Jarbas de Lery Santos, 1655, Centro</p><p>Juiz de Fora, MG, CEP 36013-150</p><p>Segunda a sexta: 9h às 20h</p><p>Sábado: 9h às 18h</p><a href="https://www.google.com/maps/search/?api=1&query=Santa+Cruz+Shopping+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
- </div>
+  </div>
+ </div></div>
 </div></section>
 </main>
 
@@ -233,50 +238,29 @@ if("IntersectionObserver" in window){
   revealTargets.forEach(el=>revealObserver.observe(el));
 }else{revealTargets.forEach(el=>el.classList.add("is-visible"));}
 
-/* Carrossel automático por cartão, iniciado ao abrir a página */
+/* Faixas contínuas: vantagens, endereços e comentários */
 (function(){
-  document.querySelectorAll(".benefit-grid,.store-grid").forEach(track=>{
-    const originals=Array.from(track.children);
-    if(originals.length<2) return;
-
-    const clone=originals[0].cloneNode(true);
-    clone.setAttribute("aria-hidden","true");
-    clone.querySelectorAll("a,button,[tabindex]").forEach(el=>el.setAttribute("tabindex","-1"));
-    track.appendChild(clone);
-
-    let index=0;
-    let pausedUntil=0;
-    let resetTimer=null;
-    const interval=3800;
-
-    function moveTo(card){
-      const trackRect=track.getBoundingClientRect();
-      const cardRect=card.getBoundingClientRect();
-      const target=track.scrollLeft+(cardRect.left-trackRect.left);
-      track.scrollTo({left:target,behavior:"smooth"});
-    }
-
-    function advance(){
-      if(document.hidden || Date.now()<pausedUntil) return;
-      index++;
-      moveTo(track.children[index]);
-      if(index===originals.length){
-        clearTimeout(resetTimer);
-        resetTimer=setTimeout(()=>{
-          track.scrollTo({left:0,behavior:"auto"});
-          index=0;
-        },950);
-      }
-    }
-
-    function pauseAfterInteraction(){
-      pausedUntil=Date.now()+4500;
-    }
-    track.addEventListener("touchstart",pauseAfterInteraction,{passive:true});
-    track.addEventListener("wheel",pauseAfterInteraction,{passive:true});
-    track.addEventListener("pointerdown",pauseAfterInteraction);
-    track.addEventListener("keydown",pauseAfterInteraction);
-    window.setInterval(advance,interval);
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".marquee-viewport").forEach(viewport=>{
+    const track=viewport.querySelector(".marquee-track");
+    const group=track&&track.querySelector(".marquee-group");
+    if(!group) return;
+    const copy=group.cloneNode(true);
+    copy.setAttribute("aria-hidden","true");
+    copy.querySelectorAll("a,button,[tabindex]").forEach(el=>el.setAttribute("tabindex","-1"));
+    track.appendChild(copy);
+    if(reduced) track.style.animation="none";
+    const pause=()=>viewport.classList.add("is-paused");
+    const resume=()=>viewport.classList.remove("is-paused");
+    viewport.addEventListener("pointerdown",pause);
+    window.addEventListener("pointerup",resume);
+    viewport.addEventListener("touchstart",pause,{passive:true});
+    viewport.addEventListener("touchend",resume,{passive:true});
+    viewport.addEventListener("touchcancel",resume,{passive:true});
+    viewport.addEventListener("mouseenter",pause);
+    viewport.addEventListener("mouseleave",resume);
+    viewport.addEventListener("focusin",pause);
+    viewport.addEventListener("focusout",e=>{if(!viewport.contains(e.relatedTarget))resume();});
   });
 })();
 </script>
