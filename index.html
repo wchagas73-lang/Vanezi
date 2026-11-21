@@ -30,7 +30,7 @@ section{padding:70px 0}.section-title{text-align:center;font-size:clamp(1.8rem,4
 .problem{background:#fff}.problem-card{background:#fff5f8;border:1px solid var(--line);border-radius:22px;padding:28px;max-width:850px;margin:auto;text-align:center}
 .problem-card p{margin:8px 0;color:#604b55}
 .benefits{background:#fff7fa;padding:48px 0}.benefit-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
-.benefit{flex:0 0 calc(25% - 11px);min-width:220px;scroll-snap-align:start;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center}
+.benefit{flex:0 0 48%;min-width:220px;scroll-snap-align:start;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center}
 .benefit .symbol{font-size:1.8rem;color:var(--rose)}.benefit h3{margin:8px 0 5px;font-size:1.05rem}.benefit p{font-size:.9rem;color:var(--muted);margin:0}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#f5e6ec;box-shadow:0 5px 18px #53263812}
@@ -52,7 +52,7 @@ summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-cont
 summary:after{content:"＋";color:var(--rose);font-size:1.2rem}details[open] summary:after{content:"−"}
 details p{color:#69535d;margin:12px 0 2px}
 .stores{background:#fff7fa;padding:48px 0}.store-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#e7a2bb transparent;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
-.store{flex:0 0 calc(33.333% - 10px);min-width:260px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.store{flex:0 0 70%;min-width:260px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
 .store h3{margin:0 0 8px;color:var(--rose)}.store p{margin:5px 0;color:#66515a;font-size:.91rem}
 .store a{display:inline-block;color:var(--rose);font-weight:800;margin-top:10px}
 footer{background:#25151e;color:#fff;padding:28px 0}
@@ -233,55 +233,50 @@ if("IntersectionObserver" in window){
   revealTargets.forEach(el=>revealObserver.observe(el));
 }else{revealTargets.forEach(el=>el.classList.add("is-visible"));}
 
-/* Carrossel automático por cartão, com transição suave e loop */
+/* Carrossel automático por cartão, iniciado ao abrir a página */
 (function(){
-  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll(".benefit-grid,.store-grid").forEach(track=>{
     const originals=Array.from(track.children);
     if(originals.length<2) return;
-    const firstClone=originals[0].cloneNode(true);
-    firstClone.setAttribute("aria-hidden","true");
-    firstClone.querySelectorAll("a,button,[tabindex]").forEach(el=>el.setAttribute("tabindex","-1"));
-    track.appendChild(firstClone);
-    const cards=Array.from(track.children);
+
+    const clone=originals[0].cloneNode(true);
+    clone.setAttribute("aria-hidden","true");
+    clone.querySelectorAll("a,button,[tabindex]").forEach(el=>el.setAttribute("tabindex","-1"));
+    track.appendChild(clone);
+
     let index=0;
-    let paused=false;
-    let timer=null;
+    let pausedUntil=0;
     let resetTimer=null;
-    let resumeTimer=null;
-    function goTo(card,behavior){
-      track.scrollTo({left:card.offsetLeft-cards[0].offsetLeft,behavior});
+    const interval=3800;
+
+    function moveTo(card){
+      const trackRect=track.getBoundingClientRect();
+      const cardRect=card.getBoundingClientRect();
+      const target=track.scrollLeft+(cardRect.left-trackRect.left);
+      track.scrollTo({left:target,behavior:"smooth"});
     }
+
     function advance(){
-      if(paused||document.hidden) return;
+      if(document.hidden || Date.now()<pausedUntil) return;
       index++;
-      goTo(cards[index],reduceMotion?"auto":"smooth");
+      moveTo(track.children[index]);
       if(index===originals.length){
         clearTimeout(resetTimer);
         resetTimer=setTimeout(()=>{
           track.scrollTo({left:0,behavior:"auto"});
           index=0;
-        },700);
+        },950);
       }
     }
-    function pauseTemporarily(){
-      paused=true;
-      clearTimeout(resumeTimer);
-      resumeTimer=setTimeout(()=>{paused=false;},5000);
+
+    function pauseAfterInteraction(){
+      pausedUntil=Date.now()+4500;
     }
-    function start(){
-      if(reduceMotion) return;
-      timer=setInterval(advance,4200);
-    }
-    track.addEventListener("pointerenter",()=>{paused=true;clearTimeout(resumeTimer);});
-    track.addEventListener("pointerleave",()=>{paused=false;});
-    track.addEventListener("focusin",()=>{paused=true;clearTimeout(resumeTimer);});
-    track.addEventListener("focusout",e=>{if(!track.contains(e.relatedTarget)) paused=false;});
-    track.addEventListener("touchstart",pauseTemporarily,{passive:true});
-    track.addEventListener("wheel",pauseTemporarily,{passive:true});
-    track.addEventListener("pointerdown",pauseTemporarily);
-    track.addEventListener("keydown",pauseTemporarily);
-    start();
+    track.addEventListener("touchstart",pauseAfterInteraction,{passive:true});
+    track.addEventListener("wheel",pauseAfterInteraction,{passive:true});
+    track.addEventListener("pointerdown",pauseAfterInteraction);
+    track.addEventListener("keydown",pauseAfterInteraction);
+    window.setInterval(advance,interval);
   });
 })();
 </script>
