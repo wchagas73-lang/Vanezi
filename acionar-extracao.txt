@@ -1,1 +1,0 @@
-Arquivo de acionamento da extração da landing VANEZI. Pode ser mantido no repositório.
