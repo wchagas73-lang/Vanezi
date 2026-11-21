@@ -10,10 +10,10 @@
 :root{--rose:#c2185b;--rose2:#e7a2bb;--pink:#f9edf2;--ink:#21151b;--muted:#76656d;--white:#fff;--line:#f0d5e0}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fffafa;line-height:1.5}
 a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
-header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px #5b243014}
+header{background:#fff;position:relative;z-index:20;box-shadow:0 2px 16px #5b243014}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 0}
 .logo{width:190px;max-height:58px;object-fit:contain;object-position:left center}
-.navlinks{display:flex;gap:22px;font-size:.92rem;font-weight:700;color:#49343d}
+.navlinks{display:none;position:absolute;right:4%;top:100%;min-width:220px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 28px #5b243022;flex-direction:column;gap:0;font-size:.95rem;font-weight:700;color:#49343d}.navlinks.open{display:flex}.navlinks a{padding:12px 14px;border-radius:10px}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--rose);cursor:pointer}.menu-toggle svg{width:24px;height:24px}
 .navcta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 22px;font-weight:800;background:var(--rose);color:white;box-shadow:0 8px 18px #c2185b2a}
 .hero{background:linear-gradient(115deg,#fff8fb 0%,#f8e4ed 65%,#f1c5d7 100%);overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;min-height:520px;padding:42px 0}
@@ -22,7 +22,7 @@ h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.045em;ma
 h1 span{color:var(--rose)}.lead{font-size:1.12rem;color:#57444d;max-width:510px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn.secondary{background:#fff;color:var(--rose);border:1px solid #edc6d6;box-shadow:none}
 .hero-photo{height:450px;border-radius:48% 48% 24px 24px;overflow:hidden;box-shadow:0 18px 45px #9e55712b;border:8px solid #ffffff9c}
-.hero-photo img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f5e6ec}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;background:#f5e6ec}
 .trustline{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;color:#6a515c;font-size:.9rem;font-weight:700}
 .trustline span:before{content:"✓";color:var(--rose);margin-right:7px}
 section{padding:70px 0}.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin:0 0 12px}
@@ -59,9 +59,9 @@ footer{background:#25151e;color:#fff;padding:28px 0}
 .footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
 .footer-logo{width:150px;max-height:48px;object-fit:contain;background:#fff;border-radius:8px;padding:5px}
 .socials{display:flex;gap:12px;flex-wrap:wrap}
-.social{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:11px 16px;font-weight:800;background:#fff;color:#24151d}
-.social.wa{background:#20b765;color:#fff}.social.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff}
-.floating{position:fixed;right:16px;bottom:16px;z-index:30;background:#20b765;color:#fff;border-radius:50px;padding:13px 17px;font-weight:800;box-shadow:0 8px 25px #0003}
+.social{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;padding:0;background:#fff;color:#24151d}.social svg{width:27px;height:27px}
+.social.wa{background:#25D366;color:#fff}.social.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff}
+.floating{position:fixed;right:16px;bottom:16px;z-index:30;background:#25D366;color:#fff;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px #0003}.floating svg{width:31px;height:31px}
 @media(max-width:760px){
  .nav{padding:8px 0}.logo{width:150px}.navlinks{display:none}.navcta{padding:10px 15px;font-size:.85rem}
  .hero-grid{grid-template-columns:1fr;gap:20px;padding:35px 0 28px}.hero-photo{height:370px;max-width:440px;width:100%;margin:auto;grid-row:1}
@@ -81,8 +81,8 @@ footer{background:#25151e;color:#fff;padding:28px 0}
 <body>
 <header><div class="wrap nav">
  <a href="#inicio" aria-label="Vanezi início"><img class="logo" src="assets/vanezi-logo.png" alt="Logo Vanezi"></a>
- <nav class="navlinks"><a href="#colecao">Looks</a><a href="#vantagens">A Vanezi</a><a href="#duvidas">Dúvidas</a><a href="#lojas">Nossas lojas</a></nav>
- <a class="navcta" href="https://wa.me/5532999953215?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vanezi!" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>
+ <nav class="navlinks" id="siteMenu"><a href="#inicio">Início</a><a href="#colecao">Looks</a><a href="#vantagens">A Vanezi</a><a href="#duvidas">Dúvidas</a><a href="#lojas">Nossas lojas</a></nav>
+ <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
 </div></header>
 
 <main>
@@ -94,7 +94,7 @@ footer{background:#25151e;color:#fff;padding:28px 0}
   <div class="hero-actions"><a class="btn" href="https://wa.me/5532999953215?text=Ol%C3%A1!%20Quero%20conhecer%20os%20looks%20da%20Vanezi." target="_blank" rel="noopener">Ver novidades no WhatsApp</a><a class="btn secondary" href="#colecao">Explorar looks</a></div>
   <div class="trustline"><span>Do P ao Plus Size</span><span>3 lojas em Juiz de Fora</span><span>Atendimento próximo</span></div>
  </div>
- <div class="hero-photo"><img src="assets/look-02-vestido-preto.jpg" alt="Vestido preto da coleção Vanezi"></div>
+ <div class="hero-photo"><img src="assets/look-01-duo-pastel.jpg" alt="Duas mulheres usando looks da Vanezi"></div>
 </div></section>
 
 <section class="problem"><div class="wrap">
@@ -141,18 +141,9 @@ footer{background:#25151e;color:#fff;padding:28px 0}
   <article class="quote"><div class="stars">★★★★★</div><p>“Tem opções para montar produções diferentes, desde o dia a dia até uma ocasião especial.”</p><strong>Moda para vários momentos</strong></article>
   <article class="quote"><div class="stars">★★★★★</div><p>“Gosto de acompanhar as novidades e ver as peças nas produções do Instagram.”</p><strong>Cliente Vanezi</strong></article>
  </div>
- <p style="text-align:center;color:#806b74;font-size:.78rem;margin-top:15px">Depoimentos ilustrativos de estrutura. Substitua por avaliações reais autorizadas antes de publicar.</p>
 </div></section>
 
-<section class="contact" id="contato"><div class="wrap contact-grid">
- <div><div class="eyebrow" style="color:#ffe0eb">Seu próximo look começa aqui</div><h2 class="section-title">Fale com a Vanezi</h2><p>Preencha seu nome e e-mail. Vamos preparar uma mensagem para você enviar pelo WhatsApp e continuar o atendimento.</p><p><strong>WhatsApp: (32) 99995-3215</strong></p></div>
- <form class="form" id="leadForm">
-  <div><label for="name">Seu nome</label><input id="name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
-  <div><label for="email">Seu e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></div>
-  <button type="submit">Enviar pelo WhatsApp</button>
-  <small>Ao enviar, o WhatsApp será aberto com seus dados preenchidos. Nenhum dado é armazenado neste site.</small>
- </form>
-</div></section>
+
 
 <section class="faq" id="duvidas"><div class="wrap">
  <h2 class="section-title">Dúvidas frequentes</h2><p class="section-sub">Se precisar de mais informações, nossa equipe pode ajudar pelo WhatsApp.</p>
@@ -181,14 +172,18 @@ footer{background:#25151e;color:#fff;padding:28px 0}
  <img class="footer-logo" src="assets/vanezi-logo.png" alt="Vanezi">
  <div><strong>VANEZI | Moda feminina</strong><br><span style="color:#e9cbd7">Do P ao Plus Size • Juiz de Fora, MG</span></div>
  <div class="socials">
-  <a class="social ig" href="https://www.instagram.com/lojavanezi/" target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Instagram</a>
-  <a class="social wa" href="https://wa.me/5532999953215" target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.2 7.4L3 20l.9-5.1a8.3 8.3 0 1 1 16.6-3.2Z"/><path d="M8.4 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .6.5.9 1.3 1.6 2.2 2.1.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-2 .6-1.1-.2-2.5-.8-3.9-2-1.2-1.1-2-2.4-2.3-3.4-.3-.9-.1-1.8.5-2.4Z"/></svg> WhatsApp</a>
+  <a class="social ig" href="https://www.instagram.com/lojavanezi/" target="_blank" rel="noopener" aria-label="Instagram Vanezi"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></a>
+  <a class="social wa" href="https://wa.me/5532999953215" target="_blank" rel="noopener" aria-label="WhatsApp Vanezi"><svg aria-hidden="true" viewBox="0 0 24 24" fill="white"><path d="M12 1a11 11 0 0 0-9.5 16.5L1 23l5.7-1.5A11 11 0 1 0 12 1Zm0 19a8 8 0 0 1-4.1-1.1l-.4-.2-3.4.9.9-3.3-.2-.4A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.8c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.3.1-.4l.4-.5.2-.4-.1-.4-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2.9.4 1.2.4.5.2.9.1 1.2.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.2-.4-.3Z"/></svg></a>
  </div>
 </div></footer>
-<a class="floating" href="https://wa.me/5532999953215?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vanezi!" target="_blank" rel="noopener" aria-label="Fale com a Vanezi pelo WhatsApp"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.2 7.4L3 20l.9-5.1a8.3 8.3 0 1 1 16.6-3.2Z"/><path d="M8.4 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .6.5.9 1.3 1.6 2.2 2.1.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-2 .6-1.1-.2-2.5-.8-3.9-2-1.2-1.1-2-2.4-2.3-3.4-.3-.9-.1-1.8.5-2.4Z"/></svg> WhatsApp</a>
+<a class="floating" href="https://wa.me/5532999953215?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vanezi!" target="_blank" rel="noopener" aria-label="Fale com a Vanezi pelo WhatsApp" aria-label="WhatsApp Vanezi"><svg aria-hidden="true" viewBox="0 0 24 24" fill="white"><path d="M12 1a11 11 0 0 0-9.5 16.5L1 23l5.7-1.5A11 11 0 1 0 12 1Zm0 19a8 8 0 0 1-4.1-1.1l-.4-.2-3.4.9.9-3.3-.2-.4A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.8c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.3.1-.4l.4-.5.2-.4-.1-.4-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2.9.4 1.2.4.5.2.9.1 1.2.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.2-.4-.3Z"/></svg></a>
 
 <div class="lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button class="lightbox-close" type="button" aria-label="Fechar foto">×</button><img alt="Foto ampliada"></div>
 <script>
+const menuToggle=document.getElementById("menuToggle");
+const siteMenu=document.getElementById("siteMenu");
+menuToggle.addEventListener("click",()=>{const opened=siteMenu.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(opened));});
+siteMenu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{siteMenu.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
 const photoLightbox=document.getElementById("photoLightbox");
 const lightboxImage=photoLightbox.querySelector("img");
 document.querySelectorAll(".gallery img, .hero-photo img").forEach(img=>{img.addEventListener("click",()=>{lightboxImage.src=img.src;lightboxImage.alt=img.alt;photoLightbox.classList.add("open");document.body.style.overflow="hidden";});});
@@ -196,13 +191,5 @@ function closePhotoLightbox(){photoLightbox.classList.remove("open");lightboxIma
 photoLightbox.querySelector(".lightbox-close").addEventListener("click",closePhotoLightbox);
 photoLightbox.addEventListener("click",e=>{if(e.target===photoLightbox)closePhotoLightbox();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closePhotoLightbox();});
-document.getElementById('leadForm').addEventListener('submit', function(e){
- e.preventDefault();
- const name=document.getElementById('name').value.trim();
- const email=document.getElementById('email').value.trim();
- if(!name || !email) return;
- const msg=`Olá! Meu nome é ${name} e meu e-mail é ${email}. Vim pelo site da Vanezi e gostaria de conhecer as novidades.`;
- window.open('https://wa.me/5532999953215?text='+encodeURIComponent(msg),'_blank','noopener');
-});
 </script>
 </body></html>
