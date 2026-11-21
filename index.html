@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7e6ed">
+<meta name="description" content="Vanezi: moda feminina do P ao Plus Size. Looks para o trabalho, dia a dia e fim de semana. Três lojas em Juiz de Fora.">
+<title>Vanezi | Moda feminina do P ao Plus Size</title>
+<style>
+:root{--rose:#c2185b;--rose2:#e7a2bb;--pink:#f9edf2;--ink:#21151b;--muted:#76656d;--white:#fff;--line:#f0d5e0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fffafa;line-height:1.5}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px #5b243014}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 0}
+.logo{width:190px;max-height:58px;object-fit:contain;object-position:left center}
+.navlinks{display:flex;gap:22px;font-size:.92rem;font-weight:700;color:#49343d}
+.navcta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 22px;font-weight:800;background:var(--rose);color:white;box-shadow:0 8px 18px #c2185b2a}
+.hero{background:linear-gradient(115deg,#fff8fb 0%,#f8e4ed 65%,#f1c5d7 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;min-height:520px;padding:42px 0}
+.eyebrow{color:var(--rose);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
+h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 18px}
+h1 span{color:var(--rose)}.lead{font-size:1.12rem;color:#57444d;max-width:510px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn.secondary{background:#fff;color:var(--rose);border:1px solid #edc6d6;box-shadow:none}
+.hero-photo{height:450px;border-radius:48% 48% 24px 24px;overflow:hidden;box-shadow:0 18px 45px #9e55712b;border:8px solid #ffffff9c}
+.hero-photo img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f5e6ec}
+.trustline{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;color:#6a515c;font-size:.9rem;font-weight:700}
+.trustline span:before{content:"✓";color:var(--rose);margin-right:7px}
+section{padding:70px 0}.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin:0 0 12px}
+.section-sub{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 34px}
+.problem{background:#fff}.problem-card{background:#fff5f8;border:1px solid var(--line);border-radius:22px;padding:28px;max-width:850px;margin:auto;text-align:center}
+.problem-card p{margin:8px 0;color:#604b55}
+.benefits{background:#fff7fa}.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.benefit{background:white;border:1px solid var(--line);border-radius:18px;padding:22px 18px;text-align:center}
+.benefit .symbol{font-size:1.8rem;color:var(--rose)}.benefit h3{margin:8px 0 5px;font-size:1.05rem}.benefit p{font-size:.9rem;color:var(--muted);margin:0}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#f5e6ec;box-shadow:0 5px 18px #53263812}
+.gallery img{display:block;width:100%;aspect-ratio:3/4;object-fit:contain;background:#f5e6ec;transition:transform .35s;cursor:zoom-in}
+.gallery figure:hover img{transform:scale(1.035)}
+.gallery figcaption{padding:9px 11px;font-size:.85rem;font-weight:700;color:#5e4650}
+.social-proof{background:#fff5f8}.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}.stars{color:#e7a323;letter-spacing:3px}.quote p{margin:9px 0;color:#604b55}.quote strong{font-size:.9rem}
+.contact{background:linear-gradient(120deg,#b91457,#dc4f89);color:white}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.contact .section-title{text-align:left}.contact p{color:#ffeaf2}
+.form{background:#fff;color:var(--ink);padding:24px;border-radius:20px;display:grid;gap:12px}
+.form label{font-size:.86rem;font-weight:700}.form input{width:100%;padding:13px 14px;border:1px solid #e7cbd7;border-radius:10px;outline-color:var(--rose)}
+.form button{background:#19a85b;color:#fff;border:0;border-radius:999px;padding:14px;font-weight:800;cursor:pointer}
+.form small{color:#806b74;font-size:.76rem}
+.faq{background:#fff}.faq-list{max-width:850px;margin:auto;display:grid;gap:10px}
+details{background:#fff7fa;border:1px solid var(--line);border-radius:13px;padding:15px 18px}
+summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary:after{content:"＋";color:var(--rose);font-size:1.2rem}details[open] summary:after{content:"−"}
+details p{color:#69535d;margin:12px 0 2px}
+.stores{background:#fff7fa}.store-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.store{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.store h3{margin:0 0 8px;color:var(--rose)}.store p{margin:5px 0;color:#66515a;font-size:.91rem}
+.store a{display:inline-block;color:var(--rose);font-weight:800;margin-top:10px}
+footer{background:#25151e;color:#fff;padding:28px 0}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-logo{width:150px;max-height:48px;object-fit:contain;background:#fff;border-radius:8px;padding:5px}
+.socials{display:flex;gap:12px;flex-wrap:wrap}
+.social{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:11px 16px;font-weight:800;background:#fff;color:#24151d}
+.social.wa{background:#20b765;color:#fff}.social.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff}
+.floating{position:fixed;right:16px;bottom:16px;z-index:30;background:#20b765;color:#fff;border-radius:50px;padding:13px 17px;font-weight:800;box-shadow:0 8px 25px #0003}
+@media(max-width:760px){
+ .nav{padding:8px 0}.logo{width:150px}.navlinks{display:none}.navcta{padding:10px 15px;font-size:.85rem}
+ .hero-grid{grid-template-columns:1fr;gap:20px;padding:35px 0 28px}.hero-photo{height:370px;max-width:440px;width:100%;margin:auto;grid-row:1}
+ .hero-copy{text-align:center}.lead{margin:auto}.hero-actions,.trustline{justify-content:center}
+ section{padding:52px 0}.benefit-grid{grid-template-columns:repeat(2,1fr);gap:10px}.benefit{padding:17px 12px}
+ .gallery{grid-template-columns:repeat(2,1fr);gap:10px}.gallery figcaption{font-size:.78rem}
+ .quote-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.contact .section-title{text-align:center}
+ .store-grid{grid-template-columns:1fr}.floating{right:12px;bottom:12px}
+}
+@media(min-width:761px) and (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}.benefit-grid{grid-template-columns:repeat(2,1fr)}}
+
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,12,17,.94);display:none;align-items:center;justify-content:center;padding:22px}
+.lightbox.open{display:flex}.lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.lightbox-close{position:absolute;top:12px;right:16px;border:0;border-radius:50%;width:44px;height:44px;background:#fff;color:#21151b;font-size:28px;cursor:pointer}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+ <a href="#inicio" aria-label="Vanezi início"><img class="logo" src="assets/vanezi-logo.png" alt="Logo Vanezi"></a>
+ <nav class="navlinks"><a href="#colecao">Looks</a><a href="#vantagens">A Vanezi</a><a href="#duvidas">Dúvidas</a><a href="#lojas">Nossas lojas</a></nav>
+ <a class="navcta" href="https://wa.me/5532999953215?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vanezi!" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>
+</div></header>
+
+<main>
+<section class="hero" id="inicio"><div class="wrap hero-grid">
+ <div class="hero-copy">
+  <div class="eyebrow">Moda feminina • Juiz de Fora</div>
+  <h1>Seu estilo. Seu jeito. <span>Do P ao Plus.</span></h1>
+  <p class="lead">Looks para acompanhar você em todos os momentos, do trabalho ao fim de semana. Encontre peças que combinam com seu estilo e valorizam quem você é.</p>
+  <div class="hero-actions"><a class="btn" href="https://wa.me/5532999953215?text=Ol%C3%A1!%20Quero%20conhecer%20os%20looks%20da%20Vanezi." target="_blank" rel="noopener">Ver novidades no WhatsApp</a><a class="btn secondary" href="#colecao">Explorar looks</a></div>
+  <div class="trustline"><span>Do P ao Plus Size</span><span>3 lojas em Juiz de Fora</span><span>Atendimento próximo</span></div>
+ </div>
+ <div class="hero-photo"><img src="assets/look-02-vestido-preto.jpg" alt="Vestido preto da coleção Vanezi"></div>
+</div></section>
+
+<section class="problem"><div class="wrap">
+ <h2 class="section-title">Encontrar o look certo deve ser fácil.</h2>
+ <p class="section-sub">Moda é se sentir bem, com conforto e confiança em cada ocasião.</p>
+ <div class="problem-card"><p><strong>Chega de procurar peças sem encontrar seu estilo ou tamanho.</strong></p><p>Na Vanezi, você encontra opções do P ao Plus Size e atendimento para ajudar a escolher seu próximo look.</p></div>
+</div></section>
+
+<section class="benefits" id="vantagens"><div class="wrap">
+ <h2 class="section-title">Por que escolher a Vanezi?</h2><p class="section-sub">Uma seleção de moda feminina para diferentes estilos e momentos.</p>
+ <div class="benefit-grid">
+  <article class="benefit"><div class="symbol">♡</div><h3>Do P ao Plus Size</h3><p>Mais possibilidades para encontrar o seu tamanho.</p></article>
+  <article class="benefit"><div class="symbol">✧</div><h3>Looks versáteis</h3><p>Opções para o trabalho, passeios e fim de semana.</p></article>
+  <article class="benefit"><div class="symbol">◇</div><h3>Escolha com ajuda</h3><p>Fale com nossa equipe e tire suas dúvidas.</p></article>
+  <article class="benefit"><div class="symbol">⌖</div><h3>Três unidades</h3><p>Estamos em pontos de Juiz de Fora.</p></article>
+ </div>
+</div></section>
+
+<section id="colecao"><div class="wrap">
+ <h2 class="section-title">Inspire-se com nossos looks</h2><p class="section-sub">Veja algumas produções da Vanezi. Gostou de alguma peça? Chame no WhatsApp para consultar disponibilidade, tamanhos e valores.</p>
+ <div class="gallery">
+  <figure><img src="assets/look-01-duo-pastel.jpg" alt="Duas produções em tons pastel" loading="lazy"><figcaption>Duas produções em tons pastel</figcaption></figure>
+  <figure><img src="assets/look-02-vestido-preto.jpg" alt="Vestido preto" loading="lazy"><figcaption>Vestido preto</figcaption></figure>
+  <figure><img src="assets/look-03-pecas-no-cabide.jpg" alt="Seleção de peças" loading="lazy"><figcaption>Seleção de peças</figcaption></figure>
+  <figure><img src="assets/look-05-conjunto-azul-marinho.jpg" alt="Conjunto azul-marinho" loading="lazy"><figcaption>Conjunto azul-marinho</figcaption></figure>
+  <figure><img src="assets/look-06-blusa-caramelo-jeans.jpg" alt="Blusa caramelo com jeans" loading="lazy"><figcaption>Blusa caramelo com jeans</figcaption></figure>
+  <figure><img src="assets/look-07-look-azul.jpg" alt="Look azul" loading="lazy"><figcaption>Look azul</figcaption></figure>
+  <figure><img src="assets/look-08-conjunto-bege.jpg" alt="Conjunto bege" loading="lazy"><figcaption>Conjunto bege</figcaption></figure>
+  <figure><img src="assets/look-09-conjunto-renda-branca.jpg" alt="Conjunto branco em renda" loading="lazy"><figcaption>Conjunto branco em renda</figcaption></figure>
+  <figure><img src="assets/look-10-blusa-rendada.jpg" alt="Blusa rendada" loading="lazy"><figcaption>Blusa rendada</figcaption></figure>
+  <figure><img src="assets/look-11-look-casual.jpg" alt="Look casual" loading="lazy"><figcaption>Look casual</figcaption></figure>
+  <figure><img src="assets/look-12-macacao-preto.jpg" alt="Macacão preto" loading="lazy"><figcaption>Macacão preto</figcaption></figure>
+  <figure><img src="assets/look-13-conjunto-verde.jpg" alt="Conjunto verde" loading="lazy"><figcaption>Conjunto verde</figcaption></figure>
+  <figure><img src="assets/look-14-conjuntos-coloridos.jpg" alt="Conjuntos coloridos" loading="lazy"><figcaption>Conjuntos coloridos</figcaption></figure>
+  <figure><img src="assets/look-15-conjunto-branco-modelo.jpg" alt="Conjunto branco em renda usado por modelo" loading="lazy"><figcaption>Conjunto branco em renda</figcaption></figure>
+ </div>
+ <div style="text-align:center;margin-top:28px"><a class="btn" href="https://wa.me/5532999953215?text=Ol%C3%A1!%20Quero%20consultar%20um%20look%20que%20vi%20no%20site." target="_blank" rel="noopener">Quero consultar um look</a></div>
+</div></section>
+
+<section class="social-proof"><div class="wrap">
+ <h2 class="section-title">A Vanezi faz parte do seu dia a dia</h2><p class="section-sub">Acompanhe as novidades, veja as produções e conheça as peças que chegam às lojas.</p>
+ <div class="quote-grid">
+  <article class="quote"><div class="stars">★★★★★</div><p>“Encontrei looks que combinam com meu estilo. O atendimento pelo WhatsApp ajuda muito na escolha.”</p><strong>Experiência de compra</strong></article>
+  <article class="quote"><div class="stars">★★★★★</div><p>“Tem opções para montar produções diferentes, desde o dia a dia até uma ocasião especial.”</p><strong>Moda para vários momentos</strong></article>
+  <article class="quote"><div class="stars">★★★★★</div><p>“Gosto de acompanhar as novidades e ver as peças nas produções do Instagram.”</p><strong>Cliente Vanezi</strong></article>
+ </div>
+ <p style="text-align:center;color:#806b74;font-size:.78rem;margin-top:15px">Depoimentos ilustrativos de estrutura. Substitua por avaliações reais autorizadas antes de publicar.</p>
+</div></section>
+
+<section class="contact" id="contato"><div class="wrap contact-grid">
+ <div><div class="eyebrow" style="color:#ffe0eb">Seu próximo look começa aqui</div><h2 class="section-title">Fale com a Vanezi</h2><p>Preencha seu nome e e-mail. Vamos preparar uma mensagem para você enviar pelo WhatsApp e continuar o atendimento.</p><p><strong>WhatsApp: (32) 99995-3215</strong></p></div>
+ <form class="form" id="leadForm">
+  <div><label for="name">Seu nome</label><input id="name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
+  <div><label for="email">Seu e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></div>
+  <button type="submit">Enviar pelo WhatsApp</button>
+  <small>Ao enviar, o WhatsApp será aberto com seus dados preenchidos. Nenhum dado é armazenado neste site.</small>
+ </form>
+</div></section>
+
+<section class="faq" id="duvidas"><div class="wrap">
+ <h2 class="section-title">Dúvidas frequentes</h2><p class="section-sub">Se precisar de mais informações, nossa equipe pode ajudar pelo WhatsApp.</p>
+ <div class="faq-list">
+  <details><summary>1. Quais tamanhos vocês trabalham?</summary><p>A Vanezi trabalha com moda feminina do P ao Plus Size. Consulte pelo WhatsApp a disponibilidade do tamanho na peça desejada.</p></details>
+  <details><summary>2. Como posso consultar preço e disponibilidade?</summary><p>Envie uma mensagem pelo WhatsApp com a foto ou descrição do look. Nossa equipe poderá confirmar valor, tamanhos e disponibilidade.</p></details>
+  <details><summary>3. Posso comprar pelo WhatsApp?</summary><p>Sim. Chame no (32) 99995-3215 para receber atendimento e orientações sobre a compra.</p></details>
+  <details><summary>4. Onde ficam as lojas da Vanezi?</summary><p>Temos unidades na Rua São Mateus, no Shopping Jardim Norte e no Santa Cruz Shopping, em Juiz de Fora.</p></details>
+  <details><summary>5. Qual é o horário de funcionamento?</summary><p>A loja São Mateus funciona de segunda a sexta, das 9h às 18h30, e sábado, das 9h às 13h30. Os horários dos shoppings seguem os horários informados nesta página e podem sofrer alterações do próprio shopping.</p></details>
+  <details><summary>6. Vocês fazem entrega?</summary><p>Consulte as opções de entrega e retirada diretamente com a equipe pelo WhatsApp. A disponibilidade pode variar conforme o endereço e a peça.</p></details>
+  <details><summary>7. Como acompanho as novidades?</summary><p>Siga <a href="https://www.instagram.com/lojavanezi/" target="_blank" rel="noopener" style="color:#c2185b;font-weight:800">@lojavanezi</a> no Instagram para acompanhar looks, vídeos e novidades da loja.</p></details>
+ </div>
+</div></section>
+
+<section class="stores" id="lojas"><div class="wrap">
+ <h2 class="section-title">Encontre uma Vanezi</h2><p class="section-sub">Escolha a unidade mais conveniente e venha nos visitar.</p>
+ <div class="store-grid">
+  <article class="store"><h3>Loja São Mateus</h3><p>Rua São Mateus, 416, São Mateus</p><p>Juiz de Fora, MG, CEP 36025-000</p><p>Segunda a sexta: 9h às 18h30</p><p>Sábado: 9h às 13h30</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Sao+Mateus+416+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
+  <article class="store"><h3>Shopping Jardim Norte</h3><p>Av. Brasil, 6345, Mariano Procópio</p><p>Juiz de Fora, MG, CEP 36080-060</p><p>Segunda a sábado: 10h às 22h</p><p>Domingo: 12h às 20h</p><a href="https://www.google.com/maps/search/?api=1&query=Shopping+Jardim+Norte+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
+  <article class="store"><h3>Santa Cruz Shopping</h3><p>Rua Jarbas de Lery Santos, 1655, Centro</p><p>Juiz de Fora, MG, CEP 36013-150</p><p>Segunda a sexta: 9h às 20h</p><p>Sábado: 9h às 18h</p><a href="https://www.google.com/maps/search/?api=1&query=Santa+Cruz+Shopping+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-row">
+ <img class="footer-logo" src="assets/vanezi-logo.png" alt="Vanezi">
+ <div><strong>VANEZI | Moda feminina</strong><br><span style="color:#e9cbd7">Do P ao Plus Size • Juiz de Fora, MG</span></div>
+ <div class="socials">
+  <a class="social ig" href="https://www.instagram.com/lojavanezi/" target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Instagram</a>
+  <a class="social wa" href="https://wa.me/5532999953215" target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.2 7.4L3 20l.9-5.1a8.3 8.3 0 1 1 16.6-3.2Z"/><path d="M8.4 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .6.5.9 1.3 1.6 2.2 2.1.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-2 .6-1.1-.2-2.5-.8-3.9-2-1.2-1.1-2-2.4-2.3-3.4-.3-.9-.1-1.8.5-2.4Z"/></svg> WhatsApp</a>
+ </div>
+</div></footer>
+<a class="floating" href="https://wa.me/5532999953215?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vanezi!" target="_blank" rel="noopener" aria-label="Fale com a Vanezi pelo WhatsApp"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.2 7.4L3 20l.9-5.1a8.3 8.3 0 1 1 16.6-3.2Z"/><path d="M8.4 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .6.5.9 1.3 1.6 2.2 2.1.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-2 .6-1.1-.2-2.5-.8-3.9-2-1.2-1.1-2-2.4-2.3-3.4-.3-.9-.1-1.8.5-2.4Z"/></svg> WhatsApp</a>
+
+<div class="lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button class="lightbox-close" type="button" aria-label="Fechar foto">×</button><img alt="Foto ampliada"></div>
+<script>
+const photoLightbox=document.getElementById("photoLightbox");
+const lightboxImage=photoLightbox.querySelector("img");
+document.querySelectorAll(".gallery img, .hero-photo img").forEach(img=>{img.addEventListener("click",()=>{lightboxImage.src=img.src;lightboxImage.alt=img.alt;photoLightbox.classList.add("open");document.body.style.overflow="hidden";});});
+function closePhotoLightbox(){photoLightbox.classList.remove("open");lightboxImage.removeAttribute("src");document.body.style.overflow="";}
+photoLightbox.querySelector(".lightbox-close").addEventListener("click",closePhotoLightbox);
+photoLightbox.addEventListener("click",e=>{if(e.target===photoLightbox)closePhotoLightbox();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePhotoLightbox();});
+document.getElementById('leadForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ const email=document.getElementById('email').value.trim();
+ if(!name || !email) return;
+ const msg=`Olá! Meu nome é ${name} e meu e-mail é ${email}. Vim pelo site da Vanezi e gostaria de conhecer as novidades.`;
+ window.open('https://wa.me/5532999953215?text='+encodeURIComponent(msg),'_blank','noopener');
+});
+</script>
+</body></html>

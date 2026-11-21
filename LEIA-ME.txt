@@ -1,0 +1,19 @@
+VANEZI | Landing page
+
+Conteúdo:
+- index.html: landing page responsiva mobile-first.
+- assets/: 14 fotografias, incluindo a nova foto do conjunto branco enviada nesta atualização e o logotipo oficial Vanezi enviado pela loja.
+- As 34 imagens antigas foram removidas e substituídas pelas novas fotografias.
+- A captura com a interface do Instagram não faz parte do site.
+- As fotografias mantêm o enquadramento original, sem cortes; ao clicar, abrem em visualização ampliada.
+
+Como testar:
+1. Extraia o ZIP.
+2. Abra index.html no navegador.
+3. Para publicar, envie a pasta inteira para Cloudflare Pages.
+
+Importante antes de publicar:
+- A seção de avaliações está marcada como ilustrativa. Troque por avaliações reais autorizadas ou remova a seção.
+- O formulário abre o WhatsApp com nome e e-mail preenchidos. Não armazena dados em servidor.
+- Confirme horários das unidades de shopping em feriados e datas especiais.
+- Confirme com a loja as políticas de entrega, troca, pagamento e disponibilidade.
