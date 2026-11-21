@@ -21,16 +21,16 @@ header{background:#fff;position:relative;z-index:20;box-shadow:0 2px 16px #5b243
 h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 18px}
 h1 span{color:var(--rose)}.lead{font-size:1.12rem;color:#57444d;max-width:510px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn.secondary{background:#fff;color:var(--rose);border:1px solid #edc6d6;box-shadow:none}
-.hero-photo{width:100%;aspect-ratio:4/5;height:auto;max-height:620px;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #9e55712b;border:6px solid #ffffffc9;background:#f5e6ec}
-.hero-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#f5e6ec}
+.hero-photo{width:100%;height:auto;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #9e55712b;border:4px solid #ffffffc9;background:#f5e6ec;line-height:0}
+.hero-photo img{display:block;width:100%;height:auto;object-fit:contain;object-position:center;background:#f5e6ec}
 .trustline{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;color:#6a515c;font-size:.9rem;font-weight:700}
 .trustline span:before{content:"✓";color:var(--rose);margin-right:7px}
 section{padding:70px 0}.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin:0 0 12px}
 .section-sub{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 34px}
 .problem{background:#fff}.problem-card{background:#fff5f8;border:1px solid var(--line);border-radius:22px;padding:28px;max-width:850px;margin:auto;text-align:center}
 .problem-card p{margin:8px 0;color:#604b55}
-.benefits{background:#fff7fa}.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.benefit{background:white;border:1px solid var(--line);border-radius:18px;padding:22px 18px;text-align:center}
+.benefits{background:#fff7fa;padding:48px 0}.benefit-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#e7a2bb transparent;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
+.benefit{flex:0 0 calc(25% - 11px);min-width:220px;scroll-snap-align:start;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center}
 .benefit .symbol{font-size:1.8rem;color:var(--rose)}.benefit h3{margin:8px 0 5px;font-size:1.05rem}.benefit p{font-size:.9rem;color:var(--muted);margin:0}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#f5e6ec;box-shadow:0 5px 18px #53263812}
@@ -51,8 +51,8 @@ details{background:#fff7fa;border:1px solid var(--line);border-radius:13px;paddi
 summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
 summary:after{content:"＋";color:var(--rose);font-size:1.2rem}details[open] summary:after{content:"−"}
 details p{color:#69535d;margin:12px 0 2px}
-.stores{background:#fff7fa}.store-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.store{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.stores{background:#fff7fa;padding:48px 0}.store-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#e7a2bb transparent;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
+.store{flex:0 0 calc(33.333% - 10px);min-width:260px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
 .store h3{margin:0 0 8px;color:var(--rose)}.store p{margin:5px 0;color:#66515a;font-size:.91rem}
 .store a{display:inline-block;color:var(--rose);font-weight:800;margin-top:10px}
 footer{background:#25151e;color:#fff;padding:28px 0}
@@ -64,14 +64,14 @@ footer{background:#25151e;color:#fff;padding:28px 0}
 .floating{position:fixed;right:16px;bottom:16px;z-index:30;background:#25D366;color:#fff;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px #0003}.floating svg{width:31px;height:31px}
 @media(max-width:760px){
  .nav{padding:8px 0}.logo{width:150px}.navlinks{display:none}.navcta{padding:10px 15px;font-size:.85rem}
- .hero-grid{grid-template-columns:1fr;gap:20px;padding:35px 0 28px}.hero-photo{height:auto;aspect-ratio:4/5;max-height:560px;max-width:440px;width:100%;margin:auto;grid-row:1}
+ .hero-grid{grid-template-columns:1fr;gap:20px;padding:35px 0 28px}.hero-photo{height:auto;max-width:440px;width:100%;margin:auto;grid-row:1}
  .hero-copy{text-align:center}.lead{margin:auto}.hero-actions,.trustline{justify-content:center}
- section{padding:52px 0}.benefit-grid{grid-template-columns:repeat(2,1fr);gap:10px}.benefit{padding:17px 12px}
+ section{padding:46px 0}.benefits,.stores{padding:34px 0}.benefit-grid{gap:10px}.benefit{flex:0 0 78%;min-width:0;padding:16px 13px}
  .gallery{grid-template-columns:repeat(2,1fr);gap:10px}.gallery figcaption{font-size:.78rem}
  .quote-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.contact .section-title{text-align:center}
- .store-grid{grid-template-columns:1fr}.floating{right:12px;bottom:12px}
+ .store-grid{gap:10px}.store{flex:0 0 86%;min-width:0;padding:17px}.floating{right:12px;bottom:12px}
 }
-@media(min-width:761px) and (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}.benefit-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:761px) and (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}.benefit{flex-basis:calc(50% - 7px)}.store{flex-basis:calc(50% - 7px)}}
 
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,12,17,.94);display:none;align-items:center;justify-content:center;padding:22px}
 .lightbox.open{display:flex}.lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
@@ -133,7 +133,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #e7a2bb;outline-offset:3p
 
 <section class="benefits" id="vantagens"><div class="wrap">
  <h2 class="section-title">Por que escolher a Vanezi?</h2><p class="section-sub">Uma seleção de moda feminina para diferentes estilos e momentos.</p>
- <div class="benefit-grid">
+ <div class="benefit-grid" role="region" aria-label="Vantagens da Vanezi. Deslize horizontalmente para ver os cartões" tabindex="0">
   <article class="benefit"><div class="symbol">♡</div><h3>Do P ao Plus Size</h3><p>Mais possibilidades para encontrar o seu tamanho.</p></article>
   <article class="benefit"><div class="symbol">✧</div><h3>Looks versáteis</h3><p>Opções para o trabalho, passeios e fim de semana.</p></article>
   <article class="benefit"><div class="symbol">◇</div><h3>Escolha com ajuda</h3><p>Fale com nossa equipe e tire suas dúvidas.</p></article>
@@ -187,7 +187,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #e7a2bb;outline-offset:3p
 
 <section class="stores" id="lojas"><div class="wrap">
  <h2 class="section-title">Encontre uma Vanezi</h2><p class="section-sub">Escolha a unidade mais conveniente e venha nos visitar.</p>
- <div class="store-grid">
+ <div class="store-grid" role="region" aria-label="Endereços das lojas Vanezi. Deslize horizontalmente para ver as unidades" tabindex="0">
   <article class="store"><h3>Loja São Mateus</h3><p>Rua São Mateus, 416, São Mateus</p><p>Juiz de Fora, MG, CEP 36025-000</p><p>Segunda a sexta: 9h às 18h30</p><p>Sábado: 9h às 13h30</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Sao+Mateus+416+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
   <article class="store"><h3>Shopping Jardim Norte</h3><p>Av. Brasil, 6345, Mariano Procópio</p><p>Juiz de Fora, MG, CEP 36080-060</p><p>Segunda a sábado: 10h às 22h</p><p>Domingo: 12h às 20h</p><a href="https://www.google.com/maps/search/?api=1&query=Shopping+Jardim+Norte+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
   <article class="store"><h3>Santa Cruz Shopping</h3><p>Rua Jarbas de Lery Santos, 1655, Centro</p><p>Juiz de Fora, MG, CEP 36013-150</p><p>Segunda a sexta: 9h às 20h</p><p>Sábado: 9h às 18h</p><a href="https://www.google.com/maps/search/?api=1&query=Santa+Cruz+Shopping+Juiz+de+Fora+MG" target="_blank" rel="noopener">Ver no mapa ↗</a></article>
