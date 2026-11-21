@@ -1,0 +1,44 @@
+name: Publicar arquivos da landing VANEZI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Vanezi_Landing_Page_Atualizada_v2.zip"
+      - ".github/workflows/extrair-vanezi.yml"
+      - "acionar-extracao.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extrair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extrair landing page e imagens
+        run: |
+          unzip -o Vanezi_Landing_Page_Atualizada_v2.zip -d .
+          test -f index.html
+          test -d assets
+          test -f assets/vanezi-logo.png
+          test -f assets/look-15-conjunto-branco-modelo.jpg
+          echo "Imagens encontradas:"
+          find assets -maxdepth 1 -type f | sort
+
+      - name: Salvar arquivos extraídos no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets LEIA-ME.txt
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "Publica landing VANEZI e imagens em assets"
+            git push
+          fi
