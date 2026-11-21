@@ -231,48 +231,47 @@ if("IntersectionObserver" in window){
   revealTargets.forEach(el=>revealObserver.observe(el));
 }else{revealTargets.forEach(el=>el.classList.add("is-visible"));}
 
-/* Movimento automático suave nos carrosséis de vantagens e lojas */
+/* Carrossel automático por cartão, com transição suave */
 (function(){
   const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reduceMotion) return;
   document.querySelectorAll(".benefit-grid,.store-grid").forEach(track=>{
-    const originals=Array.from(track.children);
-    if(originals.length<2) return;
-    originals.forEach(card=>{
-      const clone=card.cloneNode(true);
-      clone.setAttribute("aria-hidden","true");
-      clone.querySelectorAll("a,button,[tabindex]").forEach(el=>el.setAttribute("tabindex","-1"));
-      track.appendChild(clone);
-    });
+    const cards=Array.from(track.children);
+    if(cards.length<2) return;
+    let index=0;
+    let timer=null;
     let paused=false;
-    let resumeTimer;
-    let lastTime=0;
-    const speed=track.classList.contains("store-grid")?36:34;
-    function pauseTemporarily(){
+    let resumeTimer=null;
+    const interval=4200;
+    function nextCard(){
+      if(paused || document.hidden) return;
+      const next=(index+1)%cards.length;
+      if(next===0){
+        track.scrollTo({left:0,behavior:reduceMotion?"auto":"smooth"});
+      }else{
+        const card=cards[next];
+        track.scrollTo({left:card.offsetLeft-track.offsetLeft,behavior:reduceMotion?"auto":"smooth"});
+      }
+      index=next;
+    }
+    function stopTemporarily(){
       paused=true;
       clearTimeout(resumeTimer);
-      resumeTimer=setTimeout(()=>{paused=false;},3500);
+      resumeTimer=setTimeout(()=>{paused=false;},5000);
+    }
+    function start(){
+      if(timer) clearInterval(timer);
+      if(!reduceMotion) timer=setInterval(nextCard,interval);
     }
     track.addEventListener("pointerenter",()=>{paused=true;clearTimeout(resumeTimer);});
     track.addEventListener("pointerleave",()=>{paused=false;});
     track.addEventListener("focusin",()=>{paused=true;clearTimeout(resumeTimer);});
     track.addEventListener("focusout",e=>{if(!track.contains(e.relatedTarget)) paused=false;});
-    track.addEventListener("touchstart",pauseTemporarily,{passive:true});
-    track.addEventListener("wheel",pauseTemporarily,{passive:true});
-    track.addEventListener("pointerdown",pauseTemporarily);
-    track.addEventListener("keydown",pauseTemporarily);
-    function animate(time){
-      if(!lastTime) lastTime=time;
-      const delta=Math.min((time-lastTime)/1000,.05);
-      lastTime=time;
-      if(!paused && !document.hidden){
-        const loopWidth=track.scrollWidth/2;
-        track.scrollLeft+=speed*delta;
-        if(track.scrollLeft>=loopWidth) track.scrollLeft-=loopWidth;
-      }
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
+    track.addEventListener("touchstart",stopTemporarily,{passive:true});
+    track.addEventListener("wheel",stopTemporarily,{passive:true});
+    track.addEventListener("pointerdown",stopTemporarily);
+    track.addEventListener("keydown",stopTemporarily);
+    document.addEventListener("visibilitychange",()=>{});
+    start();
   });
 })();
 </script>
